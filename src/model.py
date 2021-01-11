@@ -11,7 +11,8 @@ import tensorflow.contrib.slim as slim
 from tensorflow.contrib.data import shuffle_and_repeat, map_and_batch
 
 from src.archs import discriminator, generator, vgg_16
-from scipy.misc import imsave
+# from scipy.misc import imsave
+import imageio
 from src.data_loader import ImageData
 from utils.ops import l1_loss, content_loss, style_loss, angular_error
 
@@ -380,17 +381,17 @@ class Model(object):
                         delta = angular_error(a_t, a_r)
 
                         for j in range(real_imgs.shape[0]):
-                            imsave(os.path.join(
+                            imageio.imwrite(os.path.join(
                                 tar_dir,
                                 '%d_%d_%.3f_H%d_V%d.jpg' % (
                                     i, j, delta[j], a_t[j][0],
                                     a_t[j][1])), target_imgs[j])
-                            imsave(os.path.join(
+                            imageio.imwrite(os.path.join(
                                 gene_dir,
                                 '%d_%d_%.3f_H%d_V%d.jpg' % (
                                     i, j, delta[j], a_t[j][0],
                                     a_t[j][1])), fake_imgs[j])
-                            imsave(os.path.join(
+                            imageio.imwrite(os.path.join(
                                 real_dir,
                                 '%d_%d_%.3f_H%d_V%d.jpg' % (
                                     i, j, delta[j], a_t[j][0],
