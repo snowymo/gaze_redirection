@@ -33,6 +33,12 @@ The code here is the development version. It can be used for training, but there
  tensorflow == 1.7  
  numpy == 1.13.1  
  scipy == 0.19.1  
+ ### Note from Zhenyi: please run below to create a new env
+ ``` conda create -n gazered python=3.8```
+ 
+ ``` conda activate gazered```
+ 
+ ``` conda install tensorflow-gpu=1 scipy=0.19 pillow```
 
 ## Dataset
 
